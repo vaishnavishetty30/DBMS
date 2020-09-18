@@ -1,0 +1,6 @@
+create table publisher(name varchar(10) primary key, address varchar(10),phone integer);
+create table book(book_id integer primary key,Title varchar(20),Publisher_name varchar(20),pub_year integer, foreign key(publisher_name) references publisher(name));
+create table book_authors(book_id integer,author_name varchar(20),foreign key(book_id) references book(book_id));
+create table library_branch(branch_id integer primary key,branch_name varchar(10), address varchar(10));  
+create table book_copies(book_id integer ,branch_id integer,no_of_copies integer, foreign key(book_id) references book(book_id),foreign key(branch_id) references library_branch(branch_id));
+create table book_lending(book_id integer, branch_id integer,card_no integer,date_out integer,due_date integer, foreign key(book_id) references book(book_id), foreign key(branch_id) references library_branch(branch_id));
